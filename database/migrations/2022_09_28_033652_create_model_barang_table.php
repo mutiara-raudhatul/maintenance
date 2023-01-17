@@ -14,14 +14,10 @@ class CreateModelBarangTable extends Migration
     public function up()
     {
         Schema::create('model_barang', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_model_barang')->autoIncrement();
+            $table->string('id_model_barang', 2)->primary(); 
             $table->string('model_barang', 50)->nullable($value=false); 
-            
-        });
-
-        Schema::table('model_barang', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_jenis_barang');
-            $table->foreign('id_jenis_barang')->references('id_jenis_barang')->on('jenis_barang');
+            $table->string('kode_jenis', 2)->nullable($value=false); 
+            $table->foreign('kode_jenis')->references('kode_jenis')->on('jenis_barang');
         });
 
     }

@@ -13,7 +13,7 @@ class Status_permintaan extends Model
     protected $primaryKey = "id_status_permintaan"; //cek
 
     protected $fillable = [
-        'id_status_permintaan', 'status_permintaan'   
+        'id_status_permintaan', 'status_permintaan', 'keterangan'   
     ];
 
     public $timestamps = false;

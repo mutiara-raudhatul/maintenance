@@ -14,9 +14,10 @@ class CreateStatusMaintenanceTable extends Migration
     public function up()
     {
         Schema::create('status_maintenance', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_status_maintenance')->autoIncrement();
+            $table->string('id_status_maintenance', 1)->primary();
             $table->string('status_maintenance', 10)->nullable($value=false); 
         });
+        
     }
 
     /**

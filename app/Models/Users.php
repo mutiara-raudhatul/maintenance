@@ -15,10 +15,10 @@ class Users extends Authenticatable
     use HasFactory;
 
     protected $table = "users"; //cek
-    protected $primaryKey = "id"; //cek
+    protected $primaryKey = "nip"; //cek
 
     protected $fillable = [
-        'id', 'role', 'username', 'name', 'nip',  'email', 'email_verified_at', 'password', 'unit_kerja', 'eselon', 'nohp'     
+        'nip', 'role', 'username', 'name', 'email', 'email_verified_at', 'password', 'unit_kerja', 'eselon', 'nohp'     
     ];
 
     // protected $guarded=[];

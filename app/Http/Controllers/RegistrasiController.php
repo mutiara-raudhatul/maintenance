@@ -18,10 +18,10 @@ class RegistrasiController extends Controller
     public function store (Request $request)
     {
         $validateData=$request->validate([
+            'nip'=>'required|unique:users',
             'role'=>'required',
             'username'=>'required|max:255',
             'name'=>'required|max:255',
-            'nip'=>'required|unique:users',
             'email'=> 'required|email|unique:users',
             'password'=>'required|min:6|max:255',
             'unit_kerja'=>'required',
@@ -51,18 +51,18 @@ class RegistrasiController extends Controller
     }
 
     //menampilkan halaman edit user
-    public function getUpdate($id)
+    public function getUpdate($nip)
     {
-        $updt = Users:: where('id', '=', $id)
+        $updt = Users:: where('nip', '=', $nip)
         ->first();
         //dd($editSt);
         return view('user.edit-user', compact('updt'));  
     }
 
     //menyimpan data user yang diedit
-    public function setUpdate(Request $request,$id)
+    public function setUpdate(Request $request,$nip)
     {
-        $update = Users::where('id', $id)->update([
+        $update = Users::where('nip', $nip)->update([
             'name' => $request->name,
             'role' => $request->role,
             'username' => $request->username,
@@ -81,9 +81,9 @@ class RegistrasiController extends Controller
     }
     
     //menghapus data user yang dipilih
-    public function destroy($id)
+    public function destroy($nip)
     {
-        $user_hapus = Users::findorfail($id);
+        $user_hapus = Users::findorfail($nip);
         $user_hapus->delete();
         return back()->with('success', 'Data berhasil dihapus!');
     }

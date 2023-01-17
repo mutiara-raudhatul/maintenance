@@ -14,17 +14,19 @@ class CreatePermintaanMaintenanceTable extends Migration
     public function up()
     {
         Schema::create('permintaan_maintenance', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_permintaan_maintenance')->autoIncrement();
+            $table->string('id_permintaan_maintenance', 11)->primary();
+            $table->string('id_serial_number',6);
+            $table->foreign('id_serial_number')->references('id_serial_number')->on('barang');
             $table->date('tanggal_permintaan')->nullable($value=false);
-            $table->string('keterangan')->nullable($value=false);
-        });
-
-        Schema::table('permintaan_maintenance', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_jenis_barang');
-            $table->unsignedBigInteger('id_user');
-            $table->unsignedBigInteger('id_status_maintenance');
-            $table->foreign('id_jenis_barang')->references('id_jenis_barang')->on('jenis_barang');
-            $table->foreign('id_user')->references('id')->on('users');
+            $table->string('keterangan_maintenance')->nullable($value=false);
+            $table->string('nip_teknisi',4)->nullable($value=true);
+            $table->foreign('nip_teknisi')->references('nip')->on('users');
+            $table->date('jadwal_perbaikan')->nullable($value=true);
+            $table->string('note')->nullable($value=true);
+            $table->string('lokasi',30)->nullable($value=true);
+            $table->date('tanggal_selesai')->nullable($value=true);
+            $table->string('upload_form_maintenance')->nullable($value=true);
+            $table->string('id_status_maintenance',1);
             $table->foreign('id_status_maintenance')->references('id_status_maintenance')->on('status_maintenance');
         });
     }

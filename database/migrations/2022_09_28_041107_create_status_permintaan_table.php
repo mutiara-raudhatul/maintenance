@@ -14,8 +14,9 @@ class CreateStatusPermintaanTable extends Migration
     public function up()
     {
         Schema::create('status_permintaan', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_status_permintaan')->autoIncrement();
+            $table->string('id_status_permintaan', 1)->primary();
             $table->string('status_permintaan', 10)->nullable($value=false); 
+            $table->string('keterangan', 200)->nullable($value=false); 
         });
     }
 

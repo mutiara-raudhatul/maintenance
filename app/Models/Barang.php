@@ -10,9 +10,9 @@ class Barang extends Model
     use HasFactory;
     public $timestamps = false;
     protected $table = "barang"; //cek
-    protected $primaryKey = "id_barang"; //cek
+    protected $primaryKey = "id_serial_number"; //cek
 
     protected $fillable = [
-        'id_barang', 'id_serial_number', 'asset_tag', 'hostname', 'id_model_barang', 'id_status_barang'
+        'id_serial_number', 'asset_tag', 'id_model_barang', 'id_status_barang'
     ];
 }

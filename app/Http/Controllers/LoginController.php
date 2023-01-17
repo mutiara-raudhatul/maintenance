@@ -25,24 +25,24 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)){
             $request->session()->regenerate();
             $yg_login = Users::where('email','=',$request->email)->first();
-
+            
             $rolenya = $yg_login->role;
+            dump($rolenya);
+
             if($rolenya == 'admin_gudang'){
                 return redirect()->intended('dashboard-admingudang'); 
-            } if($rolenya == 'admin_teknisi'){
+            } elseif($rolenya == 'admin_teknisi'){
                 return redirect()->intended('dashboard-adminteknisi'); 
-            } if($rolenya == 'karyawan'){
+            } elseif($rolenya == 'karyawan'){
                 return redirect()->intended('dashboard-karyawan'); 
-            } if($rolenya == 'teknisi'){
+            } elseif($rolenya == 'teknisi'){
                 return redirect()->intended('dashboard-teknisi'); 
             } else {
-                return redirect()->intended('login'); 
+                return 'yahhh'; 
             }
+        } else {
+            return 'uppss';
         }
-
-        // dd('berhasil login');
-
-        return back()->with('loginError','Login Failed!');
     }
 
     public function logout (Request $request)

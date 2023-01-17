@@ -74,8 +74,8 @@
 											<td class="center">{{ $item -> unit_kerja}}</td>
 											<td class="center">{{ $item -> email}}</td>
 											<td class="center">
-                                                <a href="{{url('edit-user',$item->id)}}" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-                                                <a href="{{url('delete-user',$item->id)}}" class="on-default remove-row"onclick="return confirm('Apakah Yakin Hapus Data Ini?')"><i class="fa fa-trash-o"></i></a>
+                                                <a href="{{url('edit-user',$item->nip)}}" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                                                <a href="{{url('delete-user',$item->nip)}}" class="on-default remove-row"onclick="return confirm('Apakah Yakin Hapus Data Ini?')"><i class="fa fa-trash-o"></i></a>
 											</td>
 										</tr>
 										@endforeach

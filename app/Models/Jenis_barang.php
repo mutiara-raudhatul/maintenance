@@ -11,14 +11,18 @@ class Jenis_barang extends Model
 
     public $timestamps = false;
     protected $table = "jenis_barang"; //cek
-    protected $primaryKey = "id_jenis_barang"; //cek
+    protected $primaryKey = "kode_jenis"; //cek
 
     protected $fillable = [
-        'id_jenis_barang', 'jenis_barang', 'kode_barang','template_form_maintenance', 'id_jenis_maintenance'
+        'kode_jenis', 'nama', 'template_form_maintenance', 'id_jenis_maintenance'
     ];
     
-    // public function Model_barang()
-    // {
-    //     return $this->hasMany(Model_barang::class);
-    // }
+    public function jenis_maintenance (){
+        return $this->belongsTo(Jenis_maintenance::class, 'id_jenis_maintenance', 'id_jenis_maintenance');
+    }
+
+    public function model_barang()
+    {
+        return $this->hashMany(Model_barang::class, 'id_model_barang', 'id_model_barang');
+    }
 }

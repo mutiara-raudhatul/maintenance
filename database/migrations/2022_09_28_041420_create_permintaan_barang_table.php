@@ -14,16 +14,14 @@ class CreatePermintaanBarangTable extends Migration
     public function up()
     {
         Schema::create('permintaan_barang', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_permintaan_barang')->autoIncrement();
+            $table->string('id_permintaan_barang', 11)->primary();
+            $table->string('nip_peminta',4);
+            $table->foreign('nip_peminta')->references('nip')->on('users');
             $table->date('tanggal_permintaan')->nullable($value=false);
             $table->string('surat_izin')->nullable($value=true);
-        });
-
-        Schema::table('permintaan_barang', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_user');
-            $table->unsignedBigInteger('id_status_permintaan');
-            $table->foreign('id_user')->references('id')->on('users');
-            $table->foreign('id_status_permintaan')->references('id_status_permintaan')->on('status_permintaan');      
+            $table->string('nip_teknisi',4)->nullable($value=true);
+            $table->foreign('nip_teknisi')->references('nip')->on('users');
+            $table->string('catatan')->nullable($value=true);      
         });
     }
 

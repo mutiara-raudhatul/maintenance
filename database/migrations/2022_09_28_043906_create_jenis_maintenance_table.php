@@ -14,10 +14,9 @@ class CreateJenisMaintenanceTable extends Migration
     public function up()
     {
         Schema::create('jenis_maintenance', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_jenis_maintenance')->autoIncrement();
-            $table->string('jenis_maintenance', 30)->nullable($value=false); 
+            $table->string('id_jenis_maintenance', 1)->primary();
+            $table->string('jenis_maintenance', 20)->nullable($value=false); 
         });
-
 
     }
 

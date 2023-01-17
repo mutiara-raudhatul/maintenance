@@ -14,7 +14,7 @@ class CreateStatusBarangTable extends Migration
     public function up()
     {
         Schema::create('status_barang', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_status_barang')->autoIncrement();
+            $table->string('id_status_barang', 1)->primary();
             $table->string('status_barang', 10)->nullable($value=false); 
         });
     }

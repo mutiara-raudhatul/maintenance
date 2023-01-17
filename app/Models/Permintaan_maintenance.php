@@ -14,6 +14,10 @@ class Permintaan_maintenance extends Model
     protected $primaryKey = "id_permintaan_maintenance"; //cek
 
     protected $fillable = [
-        'id_permintaan_maintenance', 'tanggal_permintaan', 'keterangan', 'id_jenis_barang', 'id_user', 'id_status_maintenance'    
+        'id_permintaan_maintenance', 'id_serial_number', 'tanggal_permintaan', 'keterangan_maintenance', 'id_status_maintenance'    
     ];
+
+    public function status_maintenance (){
+        return $this->belongsTo(Status_maintenance::class);
+    }
 }

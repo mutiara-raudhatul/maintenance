@@ -122,7 +122,7 @@
 															</div>
 															<div class="tm-box appear-animation" data-appear-animation="fadeInRight"data-appear-animation-delay="100">
 																<p>
-																	{{ $dh->name }} mengajukan permintaan barang {{ $dh->jenis_barang }} sebanyak {{ $dh->jumlah_permintaan }} untuk  {{ $dh->unit_kerja }}. 
+																	{{ $dh->name }} mengajukan permintaan barang {{ $dh->jenis_barang }} untuk  {{ $dh->unit_kerja }}. 
 																	<br>Status permintaan<span class="text-primary"> #{{ $dh->status_permintaan}}</span>
 																</p>
 																<div class="tm-meta">

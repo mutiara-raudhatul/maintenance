@@ -17,4 +17,8 @@ class Status_maintenance extends Model
     ];
 
     public $timestamps = false;
+
+    public function permintaan_Maintenance (){
+        return $this->hasMany(Permintaan_Maintenance::class);
+    }
 }

@@ -46,7 +46,7 @@ Route::get('/', function () {
     Route::post('/login', 'App\Http\Controllers\LoginController@authenticate')->name('auth');
     Route::post('/logout', 'App\Http\Controllers\LoginController@logout')->name('logout');
 
-Route::group(['middleware' => ['auth', 'checkrole:admin_gudang']], function(){
+// Route::group(['middleware' => ['auth', 'checkrole:admin_gudang']], function(){
     //Registrasi
     Route::get('/registrasi', 'App\Http\Controllers\RegistrasiController@index')->name('registrasi')-> middleware('auth');
     Route::post('/registrasi', 'App\Http\Controllers\RegistrasiController@store')->name('regis');
@@ -58,9 +58,9 @@ Route::group(['middleware' => ['auth', 'checkrole:admin_gudang']], function(){
      
     //data user
     Route::get('/data-user', 'App\Http\Controllers\RegistrasiController@readData');
-    Route::get('/edit-user/{id}', 'App\Http\Controllers\RegistrasiController@getUpdate');
-    Route::post('/edit-user/{id}', 'App\Http\Controllers\RegistrasiController@setUpdate');
-    Route::get('/delete-user/{id}', 'App\Http\Controllers\RegistrasiController@destroy')->name('delete-user');
+    Route::get('/edit-user/{nip}', 'App\Http\Controllers\RegistrasiController@getUpdate');
+    Route::post('/edit-user/{nip}', 'App\Http\Controllers\RegistrasiController@setUpdate');
+    Route::get('/delete-user/{nip}', 'App\Http\Controllers\RegistrasiController@destroy')->name('delete-user');
 
     //---------------------------------------------BARANG
     Route::get('/data-jenis-barang',[BarangController::class, 'getDataJenis'])->name('data-jenis-barang'); //read
@@ -152,9 +152,9 @@ Route::group(['middleware' => ['auth', 'checkrole:admin_gudang']], function(){
     Route::get('/detail-respon-permintaan/{id_respon_permintaan}',[DetailResponPermintaanController::class, 'index']);
 
 
-});
+// });
 
-Route::group(['middleware' => ['auth', 'checkrole:admin_teknisi']], function(){
+// Route::group(['middleware' => ['auth', 'checkrole:admin_teknisi']], function(){
 
     Route::get('/dashboard-adminteknisi', 'App\Http\Controllers\DashboardController@dashAT')->name('dashboard-adminteknisi');
     Route::get('/history-adminteknisi', 'App\Http\Controllers\HistoriController@indexAT')->name('history-adminteknisi');
@@ -189,9 +189,9 @@ Route::group(['middleware' => ['auth', 'checkrole:admin_teknisi']], function(){
     Route::get('/update-jenis-maintenance/{id_jenis_maintenance}',[JenisMaintenanceController::class, 'getUpdate'])->name('updateJenisM');
     Route::post('/update-jenis-maintenance/{id_jenis_maintenance}',[JenisMaintenanceController::class, 'setUpdate']);
 
-});
+// });
 
-Route::group(['middleware' => ['auth', 'checkrole:teknisi']], function(){
+// Route::group(['middleware' => ['auth', 'checkrole:teknisi']], function(){
 
     Route::get('/dashboard-teknisi', 'App\Http\Controllers\DashboardController@dashT')->name('dashboard-teknisi');
     Route::get('/history-teknisi', 'App\Http\Controllers\HistoriController@indexT')->name('history-teknisi');
@@ -204,18 +204,18 @@ Route::group(['middleware' => ['auth', 'checkrole:teknisi']], function(){
     Route::get('/update-maintenance-teknisi/{id_maintenance_teknisi}',[MaintenanceTeknisiController::class, 'getUpdate']);
     Route::post('/update-maintenance-teknisi/{id_maintenance_teknisi}',[MaintenanceTeknisiController::class, 'setUpdate'])->name('updatePermintaan');
 
-});
+// });
 
-Route::group(['middleware' => ['auth', 'checkrole:karyawan']], function(){
+// Route::group(['middleware' => ['auth', 'checkrole:karyawan']], function(){
 
     Route::get('/dashboard-karyawan', 'App\Http\Controllers\DashboardController@dashK');
     Route::get('/history-karyawan', 'App\Http\Controllers\HistoriController@indexK')->name('history-karyawan');
     Route::get('/history-barang-karyawan', 'App\Http\Controllers\HistoriController@indexKB')->name('history-barang-karyawan');
 
     
-});
+// });
 
-Route::group(['middleware' => ['auth', 'checkrole:karyawan,teknisi']], function(){
+// Route::group(['middleware' => ['auth', 'checkrole:karyawan,teknisi']], function(){
 
     //------- PERMINTAAN USER----------
     Route::get('/permintaan-barang-user', [PermintaanBarangUserController::class, 'index'])->name('permintaan-barang-user');
@@ -257,12 +257,4 @@ Route::group(['middleware' => ['auth', 'checkrole:karyawan,teknisi']], function(
     Route::get('/cancel-permintaan-maintenance/{id_permintaan_maintenance}', [PermintaanMaintenanceController::class, 'cancel']);
     
 
-});
-// --------------------------------------------DASHBOARD------------------------------------------
-
-// Route::get('/dashboard-admingudang', 'App\Http\Controllers\DashboardController@index')->name('dashboard-admingudang')-> middleware('auth');
-// Route::get('/dashboard-adminteknisi', 'App\Http\Controllers\DashboardController@dashAT')->name('dashboard-adminteknisi')-> middleware('auth');
-// Route::get('/dashboard-teknisi', 'App\Http\Controllers\DashboardController@dashT')- >name('dashboard-teknisi')-> middleware('auth');
-// Route::get('/dashboard-karyawan', 'App\Http\Controllers\DashboardController@dashK')->name('dashboard-karyawan')-> middleware('auth');
-
-//-----------------------------------------BARANG DI GUDANG-------------------------------------
+// });
